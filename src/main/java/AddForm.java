@@ -57,10 +57,10 @@ public class AddForm extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         XjLabel2 = new javax.swing.JLabel();
         YjLabel2 = new javax.swing.JLabel();
-        X1jTextFieldTr1 = new javax.swing.JTextField();
-        X1jTextFieldTr2 = new javax.swing.JTextField();
-        Y1jTextFieldTr1 = new javax.swing.JTextField();
-        Y1jTextFieldTr2 = new javax.swing.JTextField();
+        X2jTextFieldPr = new javax.swing.JTextField();
+        X1jTextFieldPr = new javax.swing.JTextField();
+        Y2jTextFieldPr = new javax.swing.JTextField();
+        Y1jTextFieldPr = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -87,6 +87,11 @@ public class AddForm extends javax.swing.JFrame {
         YjLabel.setText("Y");
 
         AddCirclejButton.setText("Добавить");
+        AddCirclejButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddCirclejButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -147,6 +152,11 @@ public class AddForm extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         AddTrianglejButton.setText("Добавить");
+        AddTrianglejButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddTrianglejButtonActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Выберите цвет фигуры:");
 
@@ -233,6 +243,11 @@ public class AddForm extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         AddParallelogramjButton.setText("Добавить");
+        AddParallelogramjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddParallelogramjButtonActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Выберите цвет фигуры:");
 
@@ -261,15 +276,15 @@ public class AddForm extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(XjLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(X1jTextFieldTr2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(X1jTextFieldPr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(X1jTextFieldTr1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(X2jTextFieldPr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(YjLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(Y1jTextFieldTr2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Y1jTextFieldPr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(Y1jTextFieldTr1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Y2jTextFieldPr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -297,13 +312,13 @@ public class AddForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(XjLabel2)
-                            .addComponent(X1jTextFieldTr2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(X1jTextFieldTr1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(X1jTextFieldPr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(X2jTextFieldPr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(YjLabel2)
-                            .addComponent(Y1jTextFieldTr1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Y1jTextFieldTr2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Y2jTextFieldPr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Y1jTextFieldPr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(AddParallelogramjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -340,58 +355,68 @@ public class AddForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void AddCirclejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCirclejButtonActionPerformed
+        int X,Y, color;
+        Double R;
+        Circle c;
+        X = Integer.parseInt(this.XjTextField.getText());
+        Y = Integer.parseInt(this.YjTextField.getText());
+        color = this.jComboBox1.getSelectedIndex();
+        R = Double.valueOf(this.RadiusjTextField.getText());
+        c = new Circle(X,Y,R,color);
+        Buff.buffer = c;
+        this.dispose();
+    }//GEN-LAST:event_AddCirclejButtonActionPerformed
+
+    private void AddTrianglejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTrianglejButtonActionPerformed
+        int x1, y1, x2, y2, x3, y3, color;
+        Triangle tr;
+        x1 = Integer.parseInt(this.X1jTextFieldTr.getText());
+        y1 = Integer.parseInt(this.Y1jTextFieldTr.getText());
+        x2 = Integer.parseInt(this.X2jTextFieldTr.getText());
+        y2 = Integer.parseInt(this.Y2jTextFieldTr.getText());
+        x3 = Integer.parseInt(this.X3jTextFieldTr.getText());
+        y3 = Integer.parseInt(this.Y3jTextFieldTr.getText());
+        color = this.jComboBox2.getSelectedIndex();
+        tr = new Triangle(x1,y1,x2,y2,x3,y3, color);
+        Buff.buffer = tr;
+        this.dispose();
+    }//GEN-LAST:event_AddTrianglejButtonActionPerformed
+
+    private void AddParallelogramjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddParallelogramjButtonActionPerformed
+        int x1, y1, x2, y2, color;
+        Parallelogram pr;
+        x1 = Integer.parseInt(this.X1jTextFieldPr.getText());
+        y1 = Integer.parseInt(this.Y1jTextFieldPr.getText());
+        x2 = Integer.parseInt(this.X2jTextFieldPr.getText());
+        y2 = Integer.parseInt(this.Y2jTextFieldPr.getText());
+        color = this.jComboBox3.getSelectedIndex();
+        pr = new Parallelogram(x1,y1,x2,y2, color);
+        Buff.buffer = pr;
+        this.dispose();
+    }//GEN-LAST:event_AddParallelogramjButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddForm().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddCirclejButton;
     private javax.swing.JButton AddParallelogramjButton;
     private javax.swing.JButton AddTrianglejButton;
     private javax.swing.JTextField RadiusjTextField;
+    private javax.swing.JTextField X1jTextFieldPr;
     private javax.swing.JTextField X1jTextFieldTr;
-    private javax.swing.JTextField X1jTextFieldTr1;
-    private javax.swing.JTextField X1jTextFieldTr2;
+    private javax.swing.JTextField X2jTextFieldPr;
     private javax.swing.JTextField X2jTextFieldTr;
     private javax.swing.JTextField X3jTextFieldTr;
     private javax.swing.JLabel XjLabel;
     private javax.swing.JLabel XjLabel1;
     private javax.swing.JLabel XjLabel2;
     private javax.swing.JTextField XjTextField;
+    private javax.swing.JTextField Y1jTextFieldPr;
     private javax.swing.JTextField Y1jTextFieldTr;
-    private javax.swing.JTextField Y1jTextFieldTr1;
-    private javax.swing.JTextField Y1jTextFieldTr2;
+    private javax.swing.JTextField Y2jTextFieldPr;
     private javax.swing.JTextField Y2jTextFieldTr;
     private javax.swing.JTextField Y3jTextFieldTr;
     private javax.swing.JLabel YjLabel;

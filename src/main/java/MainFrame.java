@@ -11,14 +11,18 @@ import javax.swing.table.DefaultTableModel;
 public class MainFrame extends javax.swing.JFrame {
 
     private DefaultTableModel md;
+    private FigureArray arr;
 
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
-        md = (DefaultTableModel)jTable.getModel();
-        md.addRow(new Object[] {"12", "13", "32", 1, 1});
+        arr = new FigureArray();
+        this.DeljLabel.setVisible(false);
+        this.DeljTextField.setVisible(false);
+        this.deljButton.setVisible(false);
+      
     }
 
     /**
@@ -41,12 +45,12 @@ public class MainFrame extends javax.swing.JFrame {
         DeletejMenuItem = new javax.swing.JMenuItem();
         DeletejMenu = new javax.swing.JMenu();
         SortjMenu = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        SortBySquarejMenu = new javax.swing.JMenu();
+        SortByMaxSjMenuItem = new javax.swing.JMenuItem();
+        SortByMinSMenuItem = new javax.swing.JMenuItem();
+        SortByPerimeterjMenu = new javax.swing.JMenu();
+        SortByMaxPjMenuItem = new javax.swing.JMenuItem();
+        SortByMinPjMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Список фигур");
@@ -55,7 +59,7 @@ public class MainFrame extends javax.swing.JFrame {
         setForeground(java.awt.Color.darkGray);
         setResizable(false);
 
-        jTable.setBackground(new java.awt.Color(177, 211, 243));
+        jTable.setBackground(new java.awt.Color(204, 204, 204));
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -81,11 +85,10 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jTable.setToolTipText("");
         jTable.setFocusTraversalPolicyProvider(true);
-        jTable.setGridColor(new java.awt.Color(177, 211, 243));
+        jTable.setGridColor(new java.awt.Color(204, 204, 204));
         jTable.setName(""); // NOI18N
         jTable.setPreferredSize(new java.awt.Dimension(300, 200));
-        jTable.setShowGrid(false);
-        jTable.setSurrendersFocusOnKeystroke(true);
+        jTable.setShowGrid(true);
         jTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable);
         if (jTable.getColumnModel().getColumnCount() > 0) {
@@ -100,6 +103,11 @@ public class MainFrame extends javax.swing.JFrame {
         DeljLabel.setText("Выберите строку, которую хотите удалить:");
 
         deljButton.setText("Удалить");
+        deljButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deljButtonActionPerformed(evt);
+            }
+        });
 
         jMenuBar1.setName(""); // NOI18N
 
@@ -114,6 +122,11 @@ public class MainFrame extends javax.swing.JFrame {
         EditjMenu.add(AddjMenuItem);
 
         DeletejMenuItem.setText("Удалить");
+        DeletejMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeletejMenuItemActionPerformed(evt);
+            }
+        });
         EditjMenu.add(DeletejMenuItem);
 
         jMenuBar1.add(EditjMenu);
@@ -121,25 +134,45 @@ public class MainFrame extends javax.swing.JFrame {
 
         SortjMenu.setText("Сортировка");
 
-        jMenu1.setText("По площади");
+        SortBySquarejMenu.setText("По площади");
 
-        jMenuItem1.setText("По возрастанию");
-        jMenu1.add(jMenuItem1);
+        SortByMaxSjMenuItem.setText("По возрастанию");
+        SortByMaxSjMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SortByMaxSjMenuItemActionPerformed(evt);
+            }
+        });
+        SortBySquarejMenu.add(SortByMaxSjMenuItem);
 
-        jMenuItem2.setText("По убыванию");
-        jMenu1.add(jMenuItem2);
+        SortByMinSMenuItem.setText("По убыванию");
+        SortByMinSMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SortByMinSMenuItemActionPerformed(evt);
+            }
+        });
+        SortBySquarejMenu.add(SortByMinSMenuItem);
 
-        SortjMenu.add(jMenu1);
+        SortjMenu.add(SortBySquarejMenu);
 
-        jMenu2.setText("По периметру");
+        SortByPerimeterjMenu.setText("По периметру");
 
-        jMenuItem3.setText("По возрастанию");
-        jMenu2.add(jMenuItem3);
+        SortByMaxPjMenuItem.setText("По возрастанию");
+        SortByMaxPjMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SortByMaxPjMenuItemActionPerformed(evt);
+            }
+        });
+        SortByPerimeterjMenu.add(SortByMaxPjMenuItem);
 
-        jMenuItem4.setText("По убыванию");
-        jMenu2.add(jMenuItem4);
+        SortByMinPjMenuItem.setText("По убыванию");
+        SortByMinPjMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SortByMinPjMenuItemActionPerformed(evt);
+            }
+        });
+        SortByPerimeterjMenu.add(SortByMinPjMenuItem);
 
-        SortjMenu.add(jMenu2);
+        SortjMenu.add(SortByPerimeterjMenu);
 
         jMenuBar1.add(SortjMenu);
 
@@ -184,8 +217,85 @@ public class MainFrame extends javax.swing.JFrame {
     private void AddjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddjMenuItemActionPerformed
         AddForm f = new AddForm();
         f.setVisible(true);
+        f.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent evt)
+            {
+                if(Buff.buffer != null)
+                {
+                    arr.Add(Buff.buffer);
+                    UpdateTable();
+                    Buff.buffer=null;
+                }
+            }
+        });          
     }//GEN-LAST:event_AddjMenuItemActionPerformed
 
+    private void deljButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deljButtonActionPerformed
+        int ind = Integer.parseInt(this.DeljTextField.getText())-1;
+        try
+        {
+            arr.Delete(ind);
+            UpdateTable();
+            this.DeljLabel.setVisible(false);
+            this.DeljTextField.setVisible(false);
+            this.DeljTextField.setText("");
+            this.deljButton.setVisible(false);
+        }
+        catch(Exception e)
+        {
+            this.DeljTextField.setText("");
+        }
+    }//GEN-LAST:event_deljButtonActionPerformed
+
+    private void SortByMaxSjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortByMaxSjMenuItemActionPerformed
+        arr.SortByMaxSquare();
+        UpdateTable();
+    }//GEN-LAST:event_SortByMaxSjMenuItemActionPerformed
+
+    private void SortByMinSMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortByMinSMenuItemActionPerformed
+        arr.SortByMinSquare();
+        UpdateTable();
+    }//GEN-LAST:event_SortByMinSMenuItemActionPerformed
+
+    private void SortByMaxPjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortByMaxPjMenuItemActionPerformed
+        arr.SortByMaxPerimeter();
+        UpdateTable();
+    }//GEN-LAST:event_SortByMaxPjMenuItemActionPerformed
+
+    private void SortByMinPjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortByMinPjMenuItemActionPerformed
+        arr.SortByMinPerimeter();
+        UpdateTable();
+    }//GEN-LAST:event_SortByMinPjMenuItemActionPerformed
+
+    private void DeletejMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletejMenuItemActionPerformed
+        if(arr.GetSize()>0)
+        {
+            this.DeljLabel.setVisible(true);
+            this.DeljTextField.setVisible(true);
+            this.deljButton.setVisible(true);
+        }
+    }//GEN-LAST:event_DeletejMenuItemActionPerformed
+
+    private void UpdateTable()
+    {
+        md = (DefaultTableModel)jTable.getModel();
+        String type, color, description;
+        Double P,S;
+        Figure f;
+        for(int i=0; i<md.getRowCount(); i++)
+            md.removeRow(0);
+        for(int i=0; i<arr.GetSize(); i++)
+        {
+            f = arr.GetElement(i);
+            type = FigureArray.GetType(f);
+            color = f.GetColor();
+            description = f.toString();
+            P = f.CalcPerimeter();
+            S = f.CalcSquare();
+            md.addRow(new Object[] {type, color, description, P, S});
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -197,15 +307,15 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel DeljLabel;
     private javax.swing.JTextField DeljTextField;
     private javax.swing.JMenu EditjMenu;
+    private javax.swing.JMenuItem SortByMaxPjMenuItem;
+    private javax.swing.JMenuItem SortByMaxSjMenuItem;
+    private javax.swing.JMenuItem SortByMinPjMenuItem;
+    private javax.swing.JMenuItem SortByMinSMenuItem;
+    private javax.swing.JMenu SortByPerimeterjMenu;
+    private javax.swing.JMenu SortBySquarejMenu;
     private javax.swing.JMenu SortjMenu;
     private javax.swing.JButton deljButton;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
     // End of variables declaration//GEN-END:variables

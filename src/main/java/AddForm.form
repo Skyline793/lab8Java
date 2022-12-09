@@ -193,6 +193,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x414;&#x43e;&#x431;&#x430;&#x432;&#x438;&#x442;&#x44c;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddCirclejButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -299,6 +302,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x414;&#x43e;&#x431;&#x430;&#x432;&#x438;&#x442;&#x44c;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddTrianglejButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -384,16 +390,16 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="XjLabel2" min="-2" pref="22" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="X1jTextFieldTr2" min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Component id="X1jTextFieldPr" min="-2" pref="36" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="X1jTextFieldTr1" min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Component id="X2jTextFieldPr" min="-2" pref="36" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="YjLabel2" min="-2" pref="22" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="Y1jTextFieldTr2" min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Component id="Y1jTextFieldPr" min="-2" pref="36" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="Y1jTextFieldTr1" min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Component id="Y2jTextFieldPr" min="-2" pref="36" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -431,14 +437,14 @@
                               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="XjLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="X1jTextFieldTr2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="X1jTextFieldTr1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="X1jTextFieldPr" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="X2jTextFieldPr" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="YjLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Y1jTextFieldTr1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Y1jTextFieldTr2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Y2jTextFieldPr" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Y1jTextFieldPr" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="AddParallelogramjButton" min="-2" pref="32" max="-2" attributes="0"/>
@@ -454,6 +460,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x414;&#x43e;&#x431;&#x430;&#x432;&#x438;&#x442;&#x44c;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddParallelogramjButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
@@ -501,13 +510,13 @@
                 <Property name="text" type="java.lang.String" value="Y"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="X1jTextFieldTr1">
+            <Component class="javax.swing.JTextField" name="X2jTextFieldPr">
             </Component>
-            <Component class="javax.swing.JTextField" name="X1jTextFieldTr2">
+            <Component class="javax.swing.JTextField" name="X1jTextFieldPr">
             </Component>
-            <Component class="javax.swing.JTextField" name="Y1jTextFieldTr1">
+            <Component class="javax.swing.JTextField" name="Y2jTextFieldPr">
             </Component>
-            <Component class="javax.swing.JTextField" name="Y1jTextFieldTr2">
+            <Component class="javax.swing.JTextField" name="Y1jTextFieldPr">
             </Component>
           </SubComponents>
         </Container>

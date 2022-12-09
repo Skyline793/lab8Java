@@ -32,8 +32,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
+        DeljLabel = new javax.swing.JLabel();
+        DeljTextField = new javax.swing.JTextField();
+        deljButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        AddjMenu = new javax.swing.JMenu();
+        EditjMenu = new javax.swing.JMenu();
+        AddjMenuItem = new javax.swing.JMenuItem();
+        DeletejMenuItem = new javax.swing.JMenuItem();
         DeletejMenu = new javax.swing.JMenu();
         SortjMenu = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -44,8 +49,13 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Список фигур");
+        setBackground(javax.swing.UIManager.getDefaults().getColor("Button.hoverBorderColor"));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setForeground(java.awt.Color.darkGray);
+        setResizable(false);
 
-        jTable.setBackground(new java.awt.Color(153, 153, 255));
+        jTable.setBackground(new java.awt.Color(177, 211, 243));
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -71,8 +81,10 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jTable.setToolTipText("");
         jTable.setFocusTraversalPolicyProvider(true);
+        jTable.setGridColor(new java.awt.Color(177, 211, 243));
         jTable.setName(""); // NOI18N
         jTable.setPreferredSize(new java.awt.Dimension(300, 200));
+        jTable.setShowGrid(false);
         jTable.setSurrendersFocusOnKeystroke(true);
         jTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable);
@@ -85,10 +97,26 @@ public class MainFrame extends javax.swing.JFrame {
             jTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        AddjMenu.setText("Добавить");
-        jMenuBar1.add(AddjMenu);
+        DeljLabel.setText("Выберите строку, которую хотите удалить:");
 
-        DeletejMenu.setText("Удалить");
+        deljButton.setText("Удалить");
+
+        jMenuBar1.setName(""); // NOI18N
+
+        EditjMenu.setText("Редактирование");
+
+        AddjMenuItem.setText("Добавить");
+        AddjMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddjMenuItemActionPerformed(evt);
+            }
+        });
+        EditjMenu.add(AddjMenuItem);
+
+        DeletejMenuItem.setText("Удалить");
+        EditjMenu.add(DeletejMenuItem);
+
+        jMenuBar1.add(EditjMenu);
         jMenuBar1.add(DeletejMenu);
 
         SortjMenu.setText("Сортировка");
@@ -116,6 +144,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1.add(SortjMenu);
 
         setJMenuBar(jMenuBar1);
+        jMenuBar1.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,7 +152,14 @@ public class MainFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 854, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 854, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(DeljLabel)
+                        .addGap(50, 50, 50)
+                        .addComponent(DeljTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(deljButton)))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -131,21 +167,38 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DeljLabel)
+                    .addComponent(DeljTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deljButton))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleName("");
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AddjMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddjMenuItemActionPerformed
+        AddForm f = new AddForm();
+        f.setVisible(true);
+    }//GEN-LAST:event_AddjMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu AddjMenu;
+    private javax.swing.JMenuItem AddjMenuItem;
     private javax.swing.JMenu DeletejMenu;
+    private javax.swing.JMenuItem DeletejMenuItem;
+    private javax.swing.JLabel DeljLabel;
+    private javax.swing.JTextField DeljTextField;
+    private javax.swing.JMenu EditjMenu;
     private javax.swing.JMenu SortjMenu;
+    private javax.swing.JButton deljButton;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

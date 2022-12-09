@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import static java.lang.Math.sqrt;
 
 /*
@@ -11,7 +12,7 @@ import static java.lang.Math.sqrt;
  *
  * @author Skyline
  */
-public class Vector extends Point {
+public class Vector extends Point implements Serializable{
     Vector() //конструктор без параметров
 	{
 		super(0,0);

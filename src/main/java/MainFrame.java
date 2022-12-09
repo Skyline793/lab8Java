@@ -2,6 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -34,12 +44,15 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
         DeljLabel = new javax.swing.JLabel();
         DeljTextField = new javax.swing.JTextField();
         deljButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
+        FilejMenu = new javax.swing.JMenu();
+        OpenFileMenuItem = new javax.swing.JMenuItem();
+        SaveFilejMenuItem = new javax.swing.JMenuItem();
         EditjMenu = new javax.swing.JMenu();
         AddjMenuItem = new javax.swing.JMenuItem();
         DeletejMenuItem = new javax.swing.JMenuItem();
@@ -59,47 +72,6 @@ public class MainFrame extends javax.swing.JFrame {
         setForeground(java.awt.Color.darkGray);
         setResizable(false);
 
-        jTable.setBackground(new java.awt.Color(204, 204, 204));
-        jTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Тип фигуры", "Цвет", "Данные фигуры", "Периметр", "Площадь"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable.setToolTipText("");
-        jTable.setFocusTraversalPolicyProvider(true);
-        jTable.setGridColor(new java.awt.Color(204, 204, 204));
-        jTable.setName(""); // NOI18N
-        jTable.setPreferredSize(new java.awt.Dimension(300, 200));
-        jTable.setShowGrid(true);
-        jTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable);
-        if (jTable.getColumnModel().getColumnCount() > 0) {
-            jTable.getColumnModel().getColumn(0).setResizable(false);
-            jTable.getColumnModel().getColumn(1).setResizable(false);
-            jTable.getColumnModel().getColumn(2).setResizable(false);
-            jTable.getColumnModel().getColumn(2).setPreferredWidth(300);
-            jTable.getColumnModel().getColumn(3).setResizable(false);
-            jTable.getColumnModel().getColumn(4).setResizable(false);
-        }
-
         DeljLabel.setText("Выберите строку, которую хотите удалить:");
 
         deljButton.setText("Удалить");
@@ -109,7 +81,50 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jTable.setBackground(java.awt.SystemColor.activeCaption);
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Тип фигуры", "Цвет", "Данные фигуры", "Периметр", "Площадь"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable.setGridColor(java.awt.SystemColor.activeCaption);
+        jScrollPane2.setViewportView(jTable);
+        if (jTable.getColumnModel().getColumnCount() > 0) {
+            jTable.getColumnModel().getColumn(2).setMinWidth(300);
+        }
+
         jMenuBar1.setName(""); // NOI18N
+
+        FilejMenu.setText("Файл");
+
+        OpenFileMenuItem.setText("Открыть");
+        OpenFileMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OpenFileMenuItemActionPerformed(evt);
+            }
+        });
+        FilejMenu.add(OpenFileMenuItem);
+
+        SaveFilejMenuItem.setText("Сохранить");
+        SaveFilejMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveFilejMenuItemActionPerformed(evt);
+            }
+        });
+        FilejMenu.add(SaveFilejMenuItem);
+
+        jMenuBar1.add(FilejMenu);
 
         EditjMenu.setText("Редактирование");
 
@@ -184,22 +199,24 @@ public class MainFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 854, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
                         .addComponent(DeljLabel)
                         .addGap(50, 50, 50)
                         .addComponent(DeljTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(deljButton)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                        .addComponent(deljButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DeljLabel)
@@ -277,13 +294,63 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_DeletejMenuItemActionPerformed
 
+    private void OpenFileMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenFileMenuItemActionPerformed
+        JFileChooser opener = new JFileChooser("C:\\Users/ivanr/Desktop");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(".bin", "bin");
+        opener.setFileFilter(filter);
+        opener.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        if(opener.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
+        {
+        String filename = opener.getSelectedFile().getPath();
+        FileInputStream fis;
+        ObjectInputStream ois;
+        try
+        {
+            fis = new FileInputStream(filename);
+            ois = new ObjectInputStream(fis);
+            arr = (FigureArray)ois.readObject();
+            UpdateTable();
+        }
+        catch(IOException | ClassNotFoundException ex)
+        {
+        }
+        }
+    }//GEN-LAST:event_OpenFileMenuItemActionPerformed
+
+    private void SaveFilejMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveFilejMenuItemActionPerformed
+        JFileChooser saver = new JFileChooser("C:\\Users/ivanr/Desktop");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(".bin", "bin");
+        saver.setFileFilter(filter);
+        saver.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        if(saver.showSaveDialog(this) == JFileChooser.APPROVE_OPTION)
+        {
+        String filename = saver.getSelectedFile().getPath();
+        FileOutputStream fos;
+        ObjectOutputStream oos;
+        try
+        {
+            fos = new FileOutputStream(filename);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(arr);
+            oos.flush();
+            oos.close();
+        }
+        catch(FileNotFoundException e)
+        {
+        } 
+        catch (IOException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    }//GEN-LAST:event_SaveFilejMenuItemActionPerformed
+
     private void UpdateTable()
     {
         md = (DefaultTableModel)jTable.getModel();
         String type, color, description;
         Double P,S;
         Figure f;
-        for(int i=0; i<md.getRowCount(); i++)
+        for(int i=0; i< md.getRowCount(); i++)
             md.removeRow(0);
         for(int i=0; i<arr.GetSize(); i++)
         {
@@ -307,6 +374,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel DeljLabel;
     private javax.swing.JTextField DeljTextField;
     private javax.swing.JMenu EditjMenu;
+    private javax.swing.JMenu FilejMenu;
+    private javax.swing.JMenuItem OpenFileMenuItem;
+    private javax.swing.JMenuItem SaveFilejMenuItem;
     private javax.swing.JMenuItem SortByMaxPjMenuItem;
     private javax.swing.JMenuItem SortByMaxSjMenuItem;
     private javax.swing.JMenuItem SortByMinPjMenuItem;
@@ -316,7 +386,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu SortjMenu;
     private javax.swing.JButton deljButton;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable;
     // End of variables declaration//GEN-END:variables
 }

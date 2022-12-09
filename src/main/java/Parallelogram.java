@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import static java.lang.Math.sqrt;
 
 /*
@@ -10,7 +11,7 @@ import static java.lang.Math.sqrt;
  *
  * @author Skyline
  */
-public class Parallelogram extends Figure {
+public class Parallelogram extends Figure implements Serializable{
     private Vector a, b; //вектора, на которых построен параллелограмм
 	
 	Parallelogram() //конструктор без параметров

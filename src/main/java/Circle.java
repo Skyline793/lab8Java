@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import static java.lang.Math.PI;
 
 /*
@@ -11,7 +12,7 @@ import static java.lang.Math.PI;
  *
  * @author Skyline
  */
-public class Circle extends Figure {
+public class Circle extends Figure implements Serializable{
     private Point center; //центр круга
 	private double R; //радиус круга
 	

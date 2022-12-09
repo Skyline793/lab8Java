@@ -1,8 +1,8 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,7 +13,7 @@ import java.util.Iterator;
  *
  * @author Skyline
  */
-public class FigureArray {
+public class FigureArray implements Serializable {
     private ArrayList<Figure> arr; //список фигур
     public FigureArray() //констуктор
     {

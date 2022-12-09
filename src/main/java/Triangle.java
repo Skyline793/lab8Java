@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
@@ -11,7 +12,7 @@ import static java.lang.Math.sqrt;
  *
  * @author Skyline
  */
-public class Triangle extends Figure {
+public class Triangle extends Figure implements Serializable{
     private Point A, B, C; //вершины треугольника
     Triangle() //конструктор без параметров
 	{

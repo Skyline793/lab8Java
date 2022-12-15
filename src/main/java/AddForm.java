@@ -1,3 +1,6 @@
+
+import java.awt.event.KeyEvent;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -77,6 +80,18 @@ public class AddForm extends javax.swing.JFrame {
         jComboBox1.setToolTipText("");
 
         jLabel5.setText("Введите радиус круга:");
+
+        RadiusjTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RadiusjTextFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                RadiusjTextFieldKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                RadiusjTextFieldKeyTyped(evt);
+            }
+        });
 
         jLabel6.setText("Введите координаты центра круга");
 
@@ -395,6 +410,18 @@ public class AddForm extends javax.swing.JFrame {
         Buff.buffer = pr;
         this.dispose();
     }//GEN-LAST:event_AddParallelogramjButtonActionPerformed
+
+    private void RadiusjTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RadiusjTextFieldKeyPressed
+
+    }//GEN-LAST:event_RadiusjTextFieldKeyPressed
+
+    private void RadiusjTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RadiusjTextFieldKeyTyped
+
+    }//GEN-LAST:event_RadiusjTextFieldKeyTyped
+
+    private void RadiusjTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RadiusjTextFieldKeyReleased
+
+    }//GEN-LAST:event_RadiusjTextFieldKeyReleased
 
     /**
      * @param args the command line arguments

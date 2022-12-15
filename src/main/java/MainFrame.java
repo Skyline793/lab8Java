@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import java.awt.Color;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -32,7 +33,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.DeljLabel.setVisible(false);
         this.DeljTextField.setVisible(false);
         this.deljButton.setVisible(false);
-      
+        getContentPane().setBackground(new Color(102,149,200));
     }
 
     /**
@@ -67,7 +68,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Список фигур");
-        setBackground(javax.swing.UIManager.getDefaults().getColor("Button.hoverBorderColor"));
+        setBackground(new java.awt.Color(102, 149, 200));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(java.awt.Color.darkGray);
         setResizable(false);
@@ -90,9 +91,16 @@ public class MainFrame extends javax.swing.JFrame {
                 "Тип фигуры", "Цвет", "Данные фигуры", "Периметр", "Площадь"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Double.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, true, true
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
